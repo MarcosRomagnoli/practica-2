@@ -12,12 +12,12 @@ def generate_statistics(names_list, goals, goals_avoided, assists):
 
 
 def get_top_scorer(statistics):
-    max_goals = max(statistics, key=lambda x: x["Goals"])
-    return max_goals["Name"], max_goals["Goals"]
+    top_scorer = max(statistics, key=lambda x: x["Goals"])
+    return top_scorer["Name"], top_scorer["Goals"]
 
 
 def calculate_score(player):
-    return player["Goals"] * 1.5 + player["Goals"] * 1.25 + player["Assists"]
+    return player["Goals"] * 1.5 + player["Avoided goals"] * 1.25 + player["Assists"]
 
 def most_influential_player(statistics):
     most_influential_player = max(statistics, key=calculate_score)
